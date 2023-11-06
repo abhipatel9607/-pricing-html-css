@@ -42,7 +42,9 @@ h1 {
 }
 
 .switch input {
-  display: none;
+  opacity: 0.5;
+  width: 46px;
+  height: 26px;
 }
 
 .switch {
