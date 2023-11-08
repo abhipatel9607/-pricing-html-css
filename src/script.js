@@ -2,6 +2,7 @@ const toggleCheckbox = document.getElementById("toggleCheckbox");
 const price_basic = document.querySelector(".price_basic");
 const price_professional = document.querySelector(".price_professional");
 const price_master = document.querySelector(".price_master");
+const cards = document.querySelectorAll(".card");
 
 // Function to toggle prices
 function togglePrices() {
@@ -20,9 +21,17 @@ function togglePrices() {
 toggleCheckbox.addEventListener("change", togglePrices);
 
 // Manage keyboard interaction
-toggleCheckbox.addEventListener("keydown", function (event) {
-    if (event.key === 'Enter') {
+toggleCheckbox.addEventListener("keydown", (e) => {
+    if (e.key === 'Enter') {
         toggleCheckbox.click(); // Simulate a click when Enter is pressed
-        event.preventDefault(); // Prevent the default Enter behavior (form submission)
+        e.preventDefault(); // Prevent the default Enter behavior (form submission)
     }
+});
+
+// Toggle card_active class
+cards.forEach(card => {
+    card.addEventListener("click", () => {
+        cards.forEach(card => card.classList.remove("card_active"));
+        card.classList.add("card_active");
+    });
 });

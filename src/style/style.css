@@ -1,11 +1,17 @@
 /** @format */
-
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Roboto&display=swap");
+
+/* Global Styles  */
+:root {
+  --blue: rgb(105, 110, 222);
+  --light_blue: rgb(163, 168, 240);
+}
 
 body {
   font-family: "Montserrat", sans-serif;
 }
 
+/*  */
 .main_container {
   width: 90vw;
   position: relative;
@@ -18,16 +24,9 @@ body {
   background-size: auto 35%, auto 75%;
 }
 
-.svg_top {
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-
 h1 {
-  letter-spacing: 0.2px;
   color: #707190;
-  padding: 10vh 0 3vh 0;
+  margin: 10vh 0 5vh 0;
   text-align: center;
   font-size: 1.6rem;
   font-family: "Montserrat", sans-serif;
@@ -37,10 +36,16 @@ h1 {
 .package_switch_container {
   display: flex;
   justify-content: center;
-  padding-top: 1.6vw;
   align-items: center;
 }
 
+.package_text {
+  color: #a6a6b1;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* Create Toggle Button */
 .switch input {
   opacity: 0.5;
   width: 46px;
@@ -64,7 +69,7 @@ h1 {
   bottom: 0;
   transition: 0.4s;
   border-radius: 34px;
-  background: linear-gradient(to right, hsl(236, 72%, 79%), hsl(237, 63%, 64%));
+  background: linear-gradient(to right, var(--light_blue), var(--blue));
 }
 
 .slider:before {
@@ -83,22 +88,19 @@ h1 {
   transform: translateX(-24px);
 }
 
-.package_text {
-  color: #a6a6b1;
-  font-size: 0.9rem;
-  font-weight: 600;
-}
-
+/* Basic Card Style */
 .cards_container {
   display: flex;
   justify-content: center;
   text-align: center;
   margin: 8vh 0 14vh 0;
 }
+
 .card {
   width: 22vw;
   background-color: #fff;
   box-shadow: 5px 5px 10px 5px rgba(233, 233, 233, 0.5);
+  align-self: center;
 }
 
 .card_title {
@@ -127,6 +129,7 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 2.2vh;
 }
 
 .card ul li {
@@ -134,7 +137,6 @@ h1 {
   color: #71747d;
   font-size: 0.8rem;
   font-weight: 600;
-  padding: 2.2vh;
 }
 
 hr {
@@ -145,29 +147,17 @@ hr {
 
 .card_1 {
   border-radius: 10px 0 0 10px;
-  align-self: center;
 }
-.card_2 {
-  align-self: center;
-}
+
 .card_3 {
   border-radius: 0 10px 10px 0;
-  align-self: center;
 }
-.card_active {
-  background: linear-gradient(to bottom, #a3a8f0, #696ede);
-  padding: 3vh 0;
-  border-radius: 10px;
-  color: #fff !important;
-}
-.card_active hr {
-  background-color: rgb(155, 161, 247);
-}
+
 .btn {
   font-size: 0.8rem;
   font-weight: 700;
   color: rgb(237, 237, 251);
-  background: linear-gradient(to right, hsl(236, 72%, 79%), hsl(237, 63%, 64%));
+  background: linear-gradient(to right, var(--light_blue), var(--blue));
   margin: 4vh 0;
   padding: 2vh;
   width: 80%;
@@ -176,57 +166,78 @@ hr {
   cursor: pointer;
   border: 1px solid #fff;
 }
-.card_active .btn {
-  color: rgb(132, 127, 191);
-  background: #fff;
-  border: 1px solid #fff;
-}
-.card_active .btn:hover {
-  background: linear-gradient(to right, hsl(236, 72%, 79%), hsl(237, 63%, 64%));
-  color: #fff;
-  border: 1px solid #fff;
-}
 .btn:hover {
   color: rgb(126, 126, 191);
   border: 1px solid rgb(126, 126, 191);
   background: #fff;
 }
+
+/* Active Card Style */
+.card_active {
+  background: linear-gradient(to bottom, var(--light_blue), var(--blue));
+  padding: 3vh 0;
+  border-radius: 10px;
+  color: #fff;
+}
+
+.card_active hr {
+  background-color: rgb(155, 161, 247);
+}
+
+.card_active .btn {
+  color: rgb(132, 127, 191);
+  background: #fff;
+  border: 1px solid #fff;
+}
+
+.card_active .btn:hover {
+  background: linear-gradient(to right, var(--light_blue), var(--blue));
+  color: #fff;
+  border: 1px solid #fff;
+}
+
 .card_active h3,
 .card_active h2,
 .card_active ul li {
   color: rgb(255, 254, 255);
 }
 
+/* MEDIA QUERY */
 @media screen and (max-width: 768px) {
   h1 {
     font-size: 2.2rem;
     margin-bottom: 2vh;
   }
+
   .cards_container {
     flex-direction: column;
     gap: 8vh;
     margin: 8vh auto;
   }
+
   .main_container {
     background-image: url("../images/bg-top.svg");
     background-repeat: no-repeat;
-
     background-position: 100% 0;
     background-position: top -40px right -180px;
     background-size: auto;
   }
+
   .card {
-    width: 320px;
-  }
-  .card_1,
-  .card_3 {
+    width: 80vw;
     border-radius: 10px;
     padding: 3vh 0;
   }
+
   .card ul li {
-    padding: 3vh;
+    padding: 2vh;
   }
+
   .card ul {
     margin: 2vh 0;
+  }
+
+  h1 {
+    margin-bottom: 6vh;
   }
 }
